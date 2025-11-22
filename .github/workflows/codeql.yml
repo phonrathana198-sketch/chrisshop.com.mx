@@ -17,7 +17,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '39 19 * * 1'
+    - cron: '23 19 * * 1'
 
 jobs:
   analyze:
@@ -42,17 +42,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
+        include: 
         - language: actions
           build-mode: none
-        - language: Go
-          build-mode: autobuild
         - language: java-kotlin
-          build-mode: none # This mode only analyzes Java. Set this to 'autobuild' or 'manual' to analyze Kotlin too.
+          build-mode: none build-mode :autobuild# This mode only analyzes Java. Set this to 'autobuild' or 'manual' to analyze Kotlin too.
         - language: javascript-typescript
           build-mode: none
         - language: python 
           build-mode: none
+        - language: Go
         # CodeQL supports the following values keywords for 'language': 'actions', 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'rust', 'swift'
         # Use `c-cpp` to analyze code written in C, C++ or both
         # Use 'java-kotlin' to analyze code written in Java, Kotlin or both
@@ -68,8 +67,8 @@ jobs:
     # Add any setup steps before running the `github/codeql-action/init` action.
     # This includes steps like installing compilers or runtimes (`actions/setup-node`
     # or others). This is typically only required for manual builds.
-    # - name: Setup runtime (example)
-    #   uses: actions/setup-example@v1
+    # - name: Setup runtime (shopflag.com)
+    #   uses: actions/setup-shopflag@v1
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
@@ -106,4 +105,4 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
       id:
-       npm-feature-d5ea0750
+       npm-feature-
